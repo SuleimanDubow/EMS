@@ -1,0 +1,97 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <link rel="stylesheet" href="{% static 'a_base.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'IMAGES/LOGO.png' %}">
+{% block title %}
+    
+  {% endblock %}
+</head>
+<style>
+  body {
+    background: url('{% static "IMAGES/wll1.jpg" %}') no-repeat center center fixed;
+    background-size: cover;
+}
+</style>
+<body>
+    <div  class='container'> 
+    <div class="row">
+      <div class="col-lg-12 col-sm-12">
+    {% for message in messages %}
+    <div style="margin: 10px 0 0 202px;" id='messages_to_be_deleted'  class="alert alert-{{ message.tags }} alert-dismissible fade show mt-1 users_table" role="alert">
+        <strong>Message:</strong> {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+    <div class="col-lg-4 col-sm-6">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-color:  #39A6A3;">
+        <div class="container-fluid">
+          <a class="navbar-brand fw-bold" href="#">GRO Events App</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              {% if user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'manage_users' %}">Users</a>
+              </li>
+
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Sitting Format
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="/sitting_format_list">View sitting format</a></li>
+                  <li><a class="dropdown-item" href="/create_sitting_format">Add New sitting format</a></li>
+                  <li>
+                  
+                </ul>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Events
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="/event_list">View Events</a></li>
+                  <li><a class="dropdown-item" href="/create_event">Add New Event</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" href="/current_events">Current Event</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href=" {% url 'sign_out' %}">Logout</a>
+              </li>
+              {% endif %}
+            </ul>
+            
+          </div>
+        </div>
+      </nav>
+</div>
+
+<div class="col-lg-12 col-sm-6">   
+    {% block content %}
+
+    {% endblock %}
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

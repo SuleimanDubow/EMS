@@ -1,0 +1,69 @@
+{% extends 'a_base.html' %}
+{% load static %}
+{% block title %}
+<link rel="stylesheet" href="{% static 'users.css' %}">
+<title>All Event - GRO EVENTS MANAGEMENT STYSTEM</title>
+
+{% endblock %}
+
+
+{% block content %}
+<div style="margin: 10px 0 0 202px;">
+
+    <div class="container">
+        <h2 class="">All Events</h2>
+        <a href="/create_event" class="btn btn-block btn-primary mt-3 mb-3">Add Event</a>
+    
+        <table class="table table-sm bg-light">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Event Name</th>
+                    <th>Date of Event</th>
+                    <th>Place of Event</th>
+                    <th>Sitting Arrangement Format</th>
+                    <th>No of Invitees</th>
+                    <th>No of Invitees to Luncheon</th>
+                    <th>Field Event Manager</th>
+                    <th>Luncheon Event Manager</th>
+                    <th>Created By</th>
+                    <th>Date Created</th>
+                    <th>Modified Date</th>
+                    <th>Modified By</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for event in events %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ event.name_of_event }}</td>
+                    <td>{{ event.date_of_event }}</td>
+                    <td>{{ event.place_of_event }}</td>
+                    <td>{{ event.type_of_sitting_format }}</td>
+                    <td>{{ event.no_of_invitees }}</td>
+                    <td>{{ event.no_of_invitees_to_luncheon }}</td>
+                    <td>{{ event.field_event_manager }}</td>
+                    <td>{{ event.luncheon_event_manager }}</td>
+                    <td>{{ event.created_by.first_name }} {{ event.created_by.last_name }}</td>
+                    <td>{{ event.date_created }}</td>
+                    <td>{{ event.modified_date }}</td>
+                    <td>{{ event.modified_by }}</td>
+                    <td>
+                        <a href="{% url 'edit_event' event.id %}" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="{% url 'delete_event' event.id %}" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="12" class="text-center">No events found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+{% endblock %}

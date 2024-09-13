@@ -1,0 +1,250 @@
+{% extends 'a_base.html' %}
+{% load static %}
+{% block title %}
+<link rel="stylesheet" href="{% static 'users.css' %}">
+<title>Edit Event: ({{event.name_of_event}}) - GRO EVENTS MANAGEMENT STYSTEM</title>
+
+{% endblock %}
+
+
+{% block content %}
+<div class="container" style="margin: 10px 202px;">
+    <h2 class="my-4">Edit Event - ({{event.name_of_event}})</h2>
+    
+    <form method="POST" action="{% url 'edit_event' event.id %}">
+        {% csrf_token %}
+
+        <div class="row">
+            <!-- Event Details -->
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Event Name</label>
+                    <input value="{{event.name_of_event}}" type="text" class="form-control" name="name" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="date_of_event" class="form-label">Date of Event</label>
+                    <input value="{{ event.date_of_event|date:"Y-m-d" }}" type="date" class="form-control" name="date_of_event" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="place_of_event" class="form-label">Place of Event</label>
+                    <input value="{{event.place_of_event}}" type="text" class="form-control" name="place_of_event" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="field_event_manager" class="form-label">Field Event Manager</label>
+                    <input value="{{event.field_event_manager}}" type="text" class="form-control" name="field_event_manager" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="luncheon_event_manager" class="form-label">Luncheon Event Manager</label>
+                    <input value="{{event.luncheon_event_manager}}" type="text" class="form-control" name="luncheon_event_manager" required>
+                </div>
+
+                <h4>Field Card</h4>
+                <div class="mb-3">
+                    <label for="field_card_cordinate_x" class="form-label">Field Card X Coordinate</label>
+                    <input value="{{event.field_card_cordinate_x}}" type="text" class="form-control" name="field_card_cordinate_x" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="field_card_cordinate_y" class="form-label">Field Card Y Coordinate</label>
+                    <input value="{{event.field_card_cordinate_y}}" type="text" class="form-control" name="field_card_cordinate_y" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="field_card_font_type" class="form-label">Field Card Font Type</label>
+                    <select class="form-control" name="field_card_font_type">
+                            <option value="Arial">Arial</option>
+                            <option value="Helvetica">Helvetica</option>
+                            <option value="Times New Roman">Times New Roman</option>
+                            <option value="Courier New">Courier New</option>
+                            <option value="Verdana">Verdana</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="Palatino">Palatino</option>
+                            <option value="Garamond">Garamond</option>
+                            <option value="Bookman">Bookman</option>
+                            <option value="Comic Sans MS">Comic Sans MS</option>
+                            <option value="Trebuchet MS">Trebuchet MS</option>
+                            <option value="Arial Black">Arial Black</option>
+                            <option value="Impact">Impact</option>
+                            <option value="Lucida Sans Unicode">Lucida Sans Unicode</option>
+                            <option value="Tahoma">Tahoma</option>
+                            <option value="Century Gothic">Century Gothic</option>
+                            <option value="Franklin Gothic Medium">Franklin Gothic Medium</option>
+                            <option value="Gill Sans">Gill Sans</option>
+                            <option value="Lucida Bright">Lucida Bright</option>
+                            <option value="Arial Narrow">Arial Narrow</option>
+                            <option value="Candara">Candara</option>
+                            <option value="Perpetua">Perpetua</option>
+                            <option value="Book Antiqua">Book Antiqua</option>
+                            <option value="Consolas">Consolas</option>
+                            <option value="Monaco">Monaco</option>
+                    </select>
+                    
+                </div>
+
+                <div class="mb-3">
+                    <label for="field_card_font_size" class="form-label">Field Card Font Size</label>
+                    <input value="{{event.field_card_font_size}}" type="number" class="form-control" name="field_card_font_size" required >
+                </div>
+            </div>
+
+            <!-- Field Card Details -->
+            <div class="col-md-6">
+                
+
+                <!-- Luncheon Card Details -->
+                <h4>Luncheon Card</h4>
+                <div class="mb-3">
+                    <label for="luncheon_card_cordinate_x" class="form-label">Luncheon Card X Coordinate</label>
+                    <input value="{{event.luncheon_card_cordinate_x}}" type="text" class="form-control" name="luncheon_card_cordinate_x" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="luncheon_card_cordinate_y" class="form-label">Luncheon Card Y Coordinate</label>
+                    <input value="{{event.luncheon_card_cordinate_y}}" type="text" class="form-control" name="luncheon_card_cordinate_y" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="luncheon_card_font_type" class="form-label">Luncheon Card Font Type</label>
+
+                    
+                    <select class="form-control" name="luncheon_card_font_type" >
+                            <option value="Arial">Arial</option>
+                            <option value="Helvetica">Helvetica</option>
+                            <option value="Times New Roman">Times New Roman</option>
+                            <option value="Courier New">Courier New</option>
+                            <option value="Verdana">Verdana</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="Palatino">Palatino</option>
+                            <option value="Garamond">Garamond</option>
+                            <option value="Bookman">Bookman</option>
+                            <option value="Comic Sans MS">Comic Sans MS</option>
+                            <option value="Trebuchet MS">Trebuchet MS</option>
+                            <option value="Arial Black">Arial Black</option>
+                            <option value="Impact">Impact</option>
+                            <option value="Lucida Sans Unicode">Lucida Sans Unicode</option>
+                            <option value="Tahoma">Tahoma</option>
+                            <option value="Century Gothic">Century Gothic</option>
+                            <option value="Franklin Gothic Medium">Franklin Gothic Medium</option>
+                            <option value="Gill Sans">Gill Sans</option>
+                            <option value="Lucida Bright">Lucida Bright</option>
+                            <option value="Arial Narrow">Arial Narrow</option>
+                            <option value="Candara">Candara</option>
+                            <option value="Perpetua">Perpetua</option>
+                            <option value="Book Antiqua">Book Antiqua</option>
+                            <option value="Consolas">Consolas</option>
+                            <option value="Monaco">Monaco</option>
+                        </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="luncheon_card_font_size" class="form-label">Luncheon Card Font Size</label>
+                    <input value="{{event.luncheon_card_font_size}}" type="number" class="form-control" name="luncheon_card_font_size" required>
+                </div>
+
+                <!-- Field Envelope Card Details -->
+                <h4>Field Envelope Card</h4>
+                <div class="mb-3">
+                    <label for="field_envelope_card_cordinate_x" class="form-label">Field Envelope Card X Coordinate</label>
+                    <input value="{{event.field_envelope_card_cordinate_x}}" type="text" class="form-control" name="field_envelope_card_cordinate_x" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="field_envelope_card_cordinate_y" class="form-label">Field Envelope Card Y Coordinate</label>
+                    <input value="{{event.field_envelope_card_cordinate_y}}" type="text" class="form-control" name="field_envelope_card_cordinate_y" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="field_envelope_card_font_type" class="form-label">Field Envelope Card Font Type</label>
+                    <select class="form-control" name="field_envelope_card_font_type">
+                            <option value="Arial">Arial</option>
+                            <option value="Helvetica">Helvetica</option>
+                            <option value="Times New Roman">Times New Roman</option>
+                            <option value="Courier New">Courier New</option>
+                            <option value="Verdana">Verdana</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="Palatino">Palatino</option>
+                            <option value="Garamond">Garamond</option>
+                            <option value="Bookman">Bookman</option>
+                            <option value="Comic Sans MS">Comic Sans MS</option>
+                            <option value="Trebuchet MS">Trebuchet MS</option>
+                            <option value="Arial Black">Arial Black</option>
+                            <option value="Impact">Impact</option>
+                            <option value="Lucida Sans Unicode">Lucida Sans Unicode</option>
+                            <option value="Tahoma">Tahoma</option>
+                            <option value="Century Gothic">Century Gothic</option>
+                            <option value="Franklin Gothic Medium">Franklin Gothic Medium</option>
+                            <option value="Gill Sans">Gill Sans</option>
+                            <option value="Lucida Bright">Lucida Bright</option>
+                            <option value="Arial Narrow">Arial Narrow</option>
+                            <option value="Candara">Candara</option>
+                            <option value="Perpetua">Perpetua</option>
+                            <option value="Book Antiqua">Book Antiqua</option>
+                            <option value="Consolas">Consolas</option>
+                            <option value="Monaco">Monaco</option>
+                        </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="field_envelope_card_font_size" class="form-label">Field Envelope Card Font Size</label>
+                    <input value="{{event.field_envelope_card_font_size}}" type="number" class="form-control" name="field_envelope_card_font_size" required>
+                </div>
+
+                <!-- Luncheon Envelope Card Details -->
+                <h4>Luncheon Envelope Card</h4>
+                <div class="mb-3">
+                    <label for="luncheon_envelope_card_cordinate_x" class="form-label">Luncheon Envelope Card X Coordinate</label>
+                    <input value="{{event.luncheon_envelope_card_cordinate_x}}" type="text" class="form-control" name="luncheon_envelope_card_cordinate_x" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="luncheon_envelope_card_cordinate_y" class="form-label">Luncheon Envelope Card Y Coordinate</label>
+                    <input value="{{event.luncheon_envelope_card_cordinate_y}}" type="text" class="form-control" name="luncheon_envelope_card_cordinate_y" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="luncheon_envelope_card_font_type" class="form-label">Luncheon Envelope Card Font Type</label>
+                    <select class="form-control" name="luncheon_envelope_card_font_type" required>
+                            <option value="Arial">Arial</option>
+                            <option value="Helvetica">Helvetica</option>
+                            <option value="Times New Roman">Times New Roman</option>
+                            <option value="Courier New">Courier New</option>
+                            <option value="Verdana">Verdana</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="Palatino">Palatino</option>
+                            <option value="Garamond">Garamond</option>
+                            <option value="Bookman">Bookman</option>
+                            <option value="Comic Sans MS">Comic Sans MS</option>
+                            <option value="Trebuchet MS">Trebuchet MS</option>
+                            <option value="Arial Black">Arial Black</option>
+                            <option value="Impact">Impact</option>
+                            <option value="Lucida Sans Unicode">Lucida Sans Unicode</option>
+                            <option value="Tahoma">Tahoma</option>
+                            <option value="Century Gothic">Century Gothic</option>
+                            <option value="Franklin Gothic Medium">Franklin Gothic Medium</option>
+                            <option value="Gill Sans">Gill Sans</option>
+                            <option value="Lucida Bright">Lucida Bright</option>
+                            <option value="Arial Narrow">Arial Narrow</option>
+                            <option value="Candara">Candara</option>
+                            <option value="Perpetua">Perpetua</option>
+                            <option value="Book Antiqua">Book Antiqua</option>
+                            <option value="Consolas">Consolas</option>
+                            <option value="Monaco">Monaco</option>
+                        </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="luncheon_envelope_card_font_size" class="form-label">Luncheon Envelope Card Font Size</label>
+                    <input value="{{event.luncheon_envelope_card_font_size}}" type="number" class="form-control" name="luncheon_envelope_card_font_size" required>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Register Event</button>
+    </form>
+</div>
+
+{% endblock %}

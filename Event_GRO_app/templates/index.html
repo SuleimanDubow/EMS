@@ -1,0 +1,51 @@
+{% extends 'master.html' %}
+
+{% load static %}
+
+{% block title %}
+<link rel="stylesheet" href="{% static 'main.css' %}">
+<title>GRO EVENTS MANAGEMENT STYSTEM</title>
+
+{% endblock %}
+
+{% block content %}
+<section>
+    <div class="circle"></div>
+    {% if user.is_authenticated %}
+<header>
+    <a href=""><img src="{% static 'IMAGES/LOGO.png' %}" alt="Logo" class="logo"></a>
+    <div class="toggle" onclick="toggleMenu();"></div>
+    <ul class="navigation">
+        <li><a href="/" >Home</a></li>
+        <li><a href="/logout">Logout</a></li>
+        
+    </ul>
+</header>
+{% else %}
+
+<header>
+    <a href=""><img src="{% static 'IMAGES/LOGO.png' %}" alt="Logo" class="logo"></a>
+    <div class="toggle" onclick="toggleMenu();"></div>
+    <ul class="navigation">
+        <li><a href="/" >Home</a></li>
+        <li><a href="/login">Login</a></li>
+        
+    </ul>
+</header>
+
+{% endif %}
+    <div class="content">
+        <div class="textBox">
+            <h2>It's not just Events<br>It's <span>GRO EVENTS</span></h2>
+            <p>Designed exclusively for government events, GRO Events App simplifies the planning and management process for official functions, meetings, and public gatherings. Our platform ensures that every detail is handled efficiently, allowing you to focus on delivering impactful events.</p>
+            <a href="https://www.starbucks.com" >Learn More</a>
+        </div>
+        <div class="imgBox">
+            <img src="{% static 'IMAGES/LOGO.png' %}" alt="Mint Coffee" class="starbucks">
+        </div>
+    </div>
+    
+</section>
+
+
+{% endblock %}

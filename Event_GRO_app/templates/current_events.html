@@ -1,0 +1,39 @@
+{% extends 'a_base.html' %}
+{% load static %}
+{% block title %}
+<link rel="stylesheet" href="{% static 'users.css' %}">
+<title>Current Events - GRO EVENTS MANAGEMENT STYSTEM</title>
+
+{% endblock %}
+
+
+{% block content %}
+<div style="margin: 10px 0 0 202px;">
+
+    <div class="container">
+        <h2 >Current Events</h2>
+
+    
+        <ol class="mt-5">
+            {% for event in events %}
+            
+                <a type="button" class="btn btn-primary">{{event.name_of_event}}</a>
+                
+            
+            {% empty %}
+            <tr>
+                <td colspan="12" class="text-center">No events found.</td>
+            </tr>
+            {% endfor %}
+
+            
+        </ol>
+                
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+{% endblock %}

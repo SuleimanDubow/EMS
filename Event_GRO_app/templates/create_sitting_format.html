@@ -1,0 +1,38 @@
+{% extends 'a_base.html' %}
+{% block title %}
+
+<title>Create Sitting Format - GRO EVENTS MANAGEMENT STYSTEM</title>
+
+{% endblock %}
+{% block content %}
+<div class="container mt-5" style="margin: 10px 0 0 202px;">
+    <h2>Create Sitting Format</h2>
+    <form method="POST" action="{% url 'create_sitting_format' %}">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="format_name" class="form-label">Sitting Format Name</label>
+            <input type="text" class="form-control" id="format_name" name="format_name" placeholder="Enter format name (e.g., National Event Sitting Format)" required>
+        </div>
+        <div class="mb-3">
+            <label for="arrangement_names" class="form-label">Sitting Arrangements</label>
+            <div id="arrangements-container">
+                <input type="text" class="form-control mb-2" name="arrangement_names" placeholder="Enter sitting arrangement name (e.g., Dias)" required>
+            </div>
+            <button type="button" class="btn btn-secondary" id="add-arrangement">Add Another Arrangement</button>
+        </div>
+        <button type="submit" class="btn btn-primary">Create Sitting Format</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById('add-arrangement').addEventListener('click', function() {
+        const container = document.getElementById('arrangements-container');
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.name = 'arrangement_names';
+        input.classList.add('form-control', 'mb-2');
+        input.placeholder = 'Enter sitting arrangement name';
+        container.appendChild(input);
+    });
+</script>
+{% endblock %}

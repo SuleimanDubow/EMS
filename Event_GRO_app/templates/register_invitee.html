@@ -1,0 +1,75 @@
+{% extends 'a_base.html' %}
+{% load static %}
+
+{% block title %}
+<title>Register Invitee - GRO EVENTS MANAGEMENT SYSTEM</title>
+{% endblock %}
+
+{% block content %}
+<div class="container" style="margin-top: 50px;">
+    <h2 class="text-center mb-4">Register Invitee</h2>
+    
+    <form method="post">
+        {% csrf_token %}
+        
+        <div class="mb-3">
+            <label for="name" class="form-label">Invitee Name</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title" name="title" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="designation" class="form-label">Designation</label>
+            <input type="text" class="form-control" id="designation" name="designation" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="occupation" class="form-label">Occupation</label>
+            <input type="text" class="form-control" id="occupation" name="occupation" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="sitting_position_field" class="form-label">Sitting Position in Field</label>
+            <input type="text" class="form-control" id="sitting_position_field" name="sitting_position_field" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="invited_for_luncheon" class="form-label">Invited for Luncheon?</label>
+            <select class="form-control" id="invited_for_luncheon" name="invited_for_luncheon" required>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="sitting_position_luncheon" class="form-label">Sitting Position in Luncheon (If Invited)</label>
+            <input type="text" class="form-control" id="sitting_position_luncheon" name="sitting_position_luncheon">
+        </div>
+
+        <div class="mb-3">
+            <label for="event" class="form-label">Event</label>
+            <select class="form-control" id="event" name="event" required>
+                {% for event in events %}
+                    <option value="{{ event.id }}">{{ event.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="company_organization_department_ministry" class="form-label">Company/Organization/Department/Ministry</label>
+            <input type="text" class="form-control" id="company_organization_department_ministry" name="company_organization_department_ministry" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="in_care_of" class="form-label">In Care Of</label>
+            <input type="text" class="form-control" id="in_care_of" name="in_care_of">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Register Invitee</button>
+    </form>
+</div>
+{% endblock %}

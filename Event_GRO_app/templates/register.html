@@ -1,0 +1,66 @@
+{% extends 'master.html' %}
+
+{% load static %}
+
+{% block title %}
+<link rel="stylesheet" href="{% static 'main.css' %}">
+<title>GRO EVENTS MANAGEMENT STYSTEM - Login</title>
+
+{% endblock %}
+
+{% block content %}
+
+<section>
+    <div class="circle"></div>
+    
+    <div class="content">
+        
+        <form class='p-5' method='post' action='{% url "sign_up" %}'>
+            {% csrf_token %}
+            <h2>Register to GRO Events App</h2>
+
+            <div class="form-group mb-3">
+                <label for="exampleInputEmail1">First Name</label>
+                <input name='f_name' type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter First name">
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="exampleInputEmail1">Last Name</label>
+                <input name='l_name' type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Last Name">
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="exampleInputEmail1">Email</label>
+                <input name='email' type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="exampleInputEmail1">Username</label>
+                <input name='username1' type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username">
+            </div>
+
+
+        
+
+
+        <div class="form-group mb-3">
+            <label for="exampleInputPassword1">Password</label>
+            <input name='password' type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        </div>
+        <div class="form-group mb-3">
+            <label for="exampleInputPassword1">Confirm Password</label>
+            <input name='password1' type="password" class="form-control" id="exampleInputPassword1" placeholder="Comfirm Password">
+        </div>
+        <div class="form-check">
+            <input name='is_staff' type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check if Staff</label>
+          </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+    </div>
+    
+</section>
+
+
+{% endblock %}
